@@ -1,6 +1,6 @@
 import { router } from "../routes/newuser.routes.js";
 import express from 'express';
 
-export const newRouter = express.Router();
+export const newUserRouter = express.Router();
 
-newRouter.use('/newuser', router);
+newUserRouter.use('/newuser', router);

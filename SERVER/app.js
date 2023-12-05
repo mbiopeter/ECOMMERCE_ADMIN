@@ -7,7 +7,8 @@ import { ErrorHandler } from './erroTracker/login.error.js';
 import { sessionMiddleware } from './services/login.services.js';
 
 import { AuthRouter } from './middleware/login.middleware.js';
-import { newRouter } from './middleware/newuser.middleware.js';
+import { newUserRouter } from './middleware/newuser.middleware.js';
+import { newProductRouter } from './middleware/newproduct.middleware.js';
 
 dotenv.config();
 const app = express();
@@ -22,7 +23,8 @@ app.use(cors({
 
 
 app.use(AuthRouter);
-app.use(newRouter);
+app.use(newUserRouter);
+app.use(newProductRouter);
 
 
 app.use(ErrorHandler);
