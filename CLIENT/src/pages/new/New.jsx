@@ -10,6 +10,8 @@ import axios from 'axios';
 function New({title}) {
 
   const [visibility, setVisibility] = useState(false);
+  const [massage, setMassage] = useState('');
+  
   const handleOk = () => {
       setVisibility(false)
   }
@@ -39,7 +41,7 @@ function New({title}) {
     const currentPath = window.location.pathname;
     const currentItem = ProductRows.find((product) => product.id === parseInt(ProductId));
 
-    const handleInput = (event) => {
+  const handleInput = (event) => {
     const { name, value, files } = event.target;
 
     if (name === "Image") {
@@ -66,9 +68,9 @@ function New({title}) {
 
     axios.post('http://localhost:8080/newuser/', formData, { withCredentials: true })
       .then((res) => {
-        if (res.data.Signup) {
+        if (res.data.Signup === true) {
           setVisibility(true);
-          console.log(true);
+          setMassage(`${values.Fullname} details were successfully added to the system with zero errors`);
         } else {
           console.log(res.data);
         }
@@ -91,7 +93,7 @@ function New({title}) {
       .then((res) => {
         if (res.data.Newproduct) {
           setVisibility(true);
-          console.log(true);
+          setMassage(`${values.Product} details were successfully added to the system with zero errors`)
         } else {
           console.log(res.data);
         }
@@ -104,7 +106,7 @@ function New({title}) {
 
   return (
     <>
-      <Success visibility={visibility} handleOk={handleOk}/>
+      <Success visibility={visibility} handleOk={handleOk} massage={massage}/>
       <div className='new'>
         <Sidebar />
         <div className="newContainer">

@@ -1,6 +1,6 @@
 import "./Success.scss"
 import DoneIcon from '@mui/icons-material/Done';
-const Success = ({visibility, handleOk}) => {
+const Success = ({visibility, handleOk, massage}) => {
 
   return visibility  ? (
     <div className="success">
@@ -13,7 +13,7 @@ const Success = ({visibility, handleOk}) => {
                 <DoneIcon className="icon"/>
             </div>
             <span>Success</span>
-            <p>User Details was successfully added to the system with zero error</p>
+            <p>{massage}</p>
             <div className="btn">
                 <button onClick={handleOk}>OK</button>
             </div>

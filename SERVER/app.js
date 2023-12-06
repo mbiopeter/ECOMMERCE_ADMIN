@@ -9,6 +9,7 @@ import { sessionMiddleware } from './services/login.services.js';
 import { AuthRouter } from './middleware/login.middleware.js';
 import { newUserRouter } from './middleware/newuser.middleware.js';
 import { newProductRouter } from './middleware/newproduct.middleware.js';
+import { AllUsersRouter } from './middleware/getallusers.middleware.js';
 
 dotenv.config();
 const app = express();
@@ -25,7 +26,7 @@ app.use(cors({
 app.use(AuthRouter);
 app.use(newUserRouter);
 app.use(newProductRouter);
-
+app.use(AllUsersRouter);
 
 app.use(ErrorHandler);
 
